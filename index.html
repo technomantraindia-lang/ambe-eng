@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ambe Engineering Co. | Precision Laser Cutting & CNC Solutions</title>
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=12">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="image&video/logos.png" alt="Ambe Engineering Co. Logo">
+                <img src="image&video/now final logo.png" alt="Ambe Engineering Co. Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -22,7 +22,7 @@
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
             <div class="nav-right">
-                <a href="contact.html" class="btn-inquiry">Inquire Now <i class="fas fa-paper-plane"></i></a>
+                <a href="contact.html" class="btn-inquiry">Inquire Now</a>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -168,7 +168,7 @@
                             <p>PRESS BRAKE MACHINE</p>
                         </div>
                     </div>
-                    <div class="machine-media-premium machine-media-contain">
+                    <div class="machine-media-premium">
                         <img src="image&video/CNC Press Brake Machine.png" alt="Ambe Engineering CNC Bending Press Brake Machine">
                     </div>
                     <p class="machine-description-premium">Highly precise CNC hydraulic press brakes offer multiple angle bending configurations. Perfect for forming complex brackets, custom housings, structural sections, and enclosure panels.</p>
@@ -234,19 +234,16 @@
                     </div>
                 </div>
 
-                <div class="mv-lines-area">
-                    <svg class="mv-connectors-svg" viewBox="0 0 960 118" preserveAspectRatio="none" aria-hidden="true">
-                        <path class="mv-connector-path mv-path-left" d="M480 0 L480 22 C480 44, 330 76, 240 118" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
-                        <path class="mv-connector-path mv-path-right" d="M480 0 L480 22 C480 44, 630 76, 720 118" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
-                        <circle class="mv-connector-dot mv-dot-left" cx="355" cy="55" r="5" fill="#2563eb"/>
-                        <circle class="mv-connector-dot mv-dot-right" cx="605" cy="55" r="5" fill="#3b82f6"/>
-                        <circle class="mv-connector-end mv-end-left" cx="240" cy="118" r="6" fill="#2563eb"/>
-                        <circle class="mv-connector-end mv-end-right" cx="720" cy="118" r="6" fill="#3b82f6"/>
+                <div class="mv-lines-area" aria-hidden="true">
+                    <svg class="mv-connectors-svg" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="mv-connector-path mv-path-left" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+                        <path class="mv-connector-path mv-path-right" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"/>
                     </svg>
                 </div>
 
                 <div class="mv-cards-grid">
                 <div class="mv-card mv-card-vision animate-on-scroll" data-reveal="left" data-delay="2">
+                    <div class="mv-card-connector" aria-hidden="true"></div>
                     <div class="mv-card-top">
                         <div class="mv-card-icon mv-icon-vision"><i class="fas fa-eye"></i></div>
                         <span class="mv-card-badge mv-badge-vision">01 / VISION</span>
@@ -259,6 +256,7 @@
                 </div>
 
                 <div class="mv-card mv-card-mission animate-on-scroll" data-reveal="right" data-delay="2">
+                    <div class="mv-card-connector" aria-hidden="true"></div>
                     <div class="mv-card-top">
                         <div class="mv-card-icon mv-icon-mission"><i class="fas fa-bullseye"></i></div>
                         <span class="mv-card-badge mv-badge-mission">02 / MISSION</span>
@@ -278,97 +276,106 @@
 
     <!-- Services Preview Section -->
     <section class="services-preview" id="services">
+        <div class="services-preview-bg"></div>
         <div class="container">
-            <div class="section-header animate-on-scroll" data-reveal="top">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">High-precision sheet metal and industrial engineering solutions custom tailored for your drawings</p>
-                <div class="title-line"></div>
+            <div class="services-showcase-header animate-on-scroll" data-reveal="top">
+                <span class="services-showcase-tag">ENGINEERING EXCELLENCE</span>
+                <h2 class="services-showcase-title">Our Services</h2>
+                <p class="services-showcase-subtitle">High-precision sheet metal and industrial engineering solutions — custom tailored from your technical drawings to finished components.</p>
+                <div class="services-showcase-line"><span></span><i class="fas fa-industry"></i><span></span></div>
             </div>
-            <div class="services-showcase-grid">
-                <div class="service-showcase-card animate-on-scroll" data-reveal="left" data-delay="0">
-                    <div class="service-showcase-image">
-                        <img src="image&video/service 1.jpg" alt="CNC Fiber Laser Cutting">
-                    </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>CNC Fiber Laser Cutting</h3>
-                    </div>
+
+            <div class="services-interactive animate-on-scroll" data-reveal="top" data-delay="1">
+                <div class="services-nav-col">
+                    <button type="button" class="service-nav-btn active" data-index="0"><span class="service-nav-num">01</span><i class="fas fa-crosshairs"></i><span>CNC Fiber Laser Cutting</span></button>
+                    <button type="button" class="service-nav-btn" data-index="1"><span class="service-nav-num">02</span><i class="fas fa-angle-double-down"></i><span>CNC Bending</span></button>
+                    <button type="button" class="service-nav-btn" data-index="2"><span class="service-nav-num">03</span><i class="fas fa-layer-group"></i><span>Sheet Metal Fabrication</span></button>
+                    <button type="button" class="service-nav-btn" data-index="3"><span class="service-nav-num">04</span><i class="fas fa-building"></i><span>Structural Fabrication</span></button>
+                    <button type="button" class="service-nav-btn" data-index="4"><span class="service-nav-num">05</span><i class="fas fa-industry"></i><span>Industrial Fabrication Work</span></button>
+                    <button type="button" class="service-nav-btn" data-index="5"><span class="service-nav-num">06</span><i class="fas fa-cubes"></i><span>MS &amp; SS Fabrication</span></button>
+                    <button type="button" class="service-nav-btn" data-index="6"><span class="service-nav-num">07</span><i class="fas fa-fire"></i><span>Welding Work</span></button>
+                    <button type="button" class="service-nav-btn" data-index="7"><span class="service-nav-num">08</span><i class="fas fa-cogs"></i><span>Custom Engineering Components</span></button>
+                    <button type="button" class="service-nav-btn" data-index="8"><span class="service-nav-num">09</span><i class="fas fa-project-diagram"></i><span>Project-Based Fabrication</span></button>
                 </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="top" data-delay="1">
-                    <div class="service-showcase-image">
-                        <img src="image&video/press brake 1.png" alt="CNC Bending">
+
+                <div class="services-display-glass">
+                    <div class="service-display-slide active" data-index="0">
+                        <div class="service-display-image"><img src="image&video/service 1.jpg" alt="CNC Fiber Laser Cutting"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">01 / CNC LASER</span>
+                            <h3>CNC Fiber Laser Cutting</h3>
+                            <p>6 kW fiber laser precision cutting for MS, SS, and aluminium — clean edges, intricate profiles, and high-volume production with rapid turnaround.</p>
+                        </div>
                     </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>CNC Bending</h3>
+                    <div class="service-display-slide" data-index="1">
+                        <div class="service-display-image"><img src="image&video/press brake 1.png" alt="CNC Bending"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">02 / CNC BENDING</span>
+                            <h3>CNC Bending</h3>
+                            <p>150 MT hydraulic press brake with multi-angle bending for brackets, enclosures, housings, and structural sections with micron-level repeatability.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="right" data-delay="2">
-                    <div class="service-showcase-image">
-                        <img src="image&video/service 3.png" alt="Sheet Metal Fabrication">
+                    <div class="service-display-slide" data-index="2">
+                        <div class="service-display-image"><img src="image&video/service 3.png" alt="Sheet Metal Fabrication"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">03 / SHEET METAL</span>
+                            <h3>Sheet Metal Fabrication</h3>
+                            <p>Complete sheet metal processing — laser cutting, bending, welding, and finishing — delivered as ready-to-assemble components.</p>
+                        </div>
                     </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Sheet Metal Fabrication</h3>
+                    <div class="service-display-slide" data-index="3">
+                        <div class="service-display-image"><img src="image&video/service 6.jfif" alt="Structural Fabrication"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">04 / STRUCTURAL</span>
+                            <h3>Structural Fabrication</h3>
+                            <p>Heavy steel frames, trusses, platforms, and industrial structures built to engineering drawings with certified welding quality.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="left" data-delay="3">
-                    <div class="service-showcase-image">
-                        <img src="image&video/service 6.jfif" alt="Structural Fabrication">
+                    <div class="service-display-slide" data-index="4">
+                        <div class="service-display-image"><img src="image&video/service 7.webp" alt="Industrial Fabrication Work"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">05 / INDUSTRIAL</span>
+                            <h3>Industrial Fabrication Work</h3>
+                            <p>Factory-grade fabrication for plant equipment, machine bases, conveyor structures, and heavy industrial assemblies.</p>
+                        </div>
                     </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Structural Fabrication</h3>
+                    <div class="service-display-slide" data-index="5">
+                        <div class="service-display-image"><img src="image&video/service 8.jpeg" alt="MS and SS Fabrication"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">06 / MS &amp; SS</span>
+                            <h3>MS &amp; SS Fabrication</h3>
+                            <p>Custom mild steel and stainless steel components with corrosion-resistant finishes for food, pharma, and industrial applications.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="top" data-delay="4">
-                    <div class="service-showcase-image">
-                        <img src="image&video/service 7.webp" alt="Industrial Fabrication Work">
+                    <div class="service-display-slide" data-index="6">
+                        <div class="service-display-image"><img src="image&video/weilding work.JPG" alt="Welding Work"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">07 / WELDING</span>
+                            <h3>Welding Work</h3>
+                            <p>Professional MIG, TIG, and arc welding for frames, tanks, assemblies, and structural joints with clean, strong welds.</p>
+                        </div>
                     </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Industrial Fabrication Work</h3>
+                    <div class="service-display-slide" data-index="7">
+                        <div class="service-display-image"><img src="image&video/cnc1.avif" alt="Custom Engineering Components"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">08 / CUSTOM</span>
+                            <h3>Custom Engineering Components</h3>
+                            <p>Bespoke machined and fabricated parts engineered to your exact specifications, tolerances, and material requirements.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="right" data-delay="5">
-                    <div class="service-showcase-image">
-                        <img src="image&video/service 8.jpeg" alt="MS and SS Fabrication">
-                    </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>MS &amp; SS Fabrication</h3>
-                    </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="left" data-delay="6">
-                    <div class="service-showcase-image">
-                        <img src="image&video/weilding work.JPG" alt="Welding Work">
-                    </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Welding Work</h3>
-                    </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="top" data-delay="7">
-                    <div class="service-showcase-image">
-                        <img src="image&video/cnc1.avif" alt="Custom Engineering Components">
-                    </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Custom Engineering Components</h3>
-                    </div>
-                </div>
-                <div class="service-showcase-card animate-on-scroll" data-reveal="right" data-delay="8">
-                    <div class="service-showcase-image">
-                        <img src="image&video/9 service.jpg" alt="Project-Based Fabrication Solutions">
-                    </div>
-                    <div class="service-showcase-body">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>Project-Based Fabrication Solutions</h3>
+                    <div class="service-display-slide" data-index="8">
+                        <div class="service-display-image"><img src="image&video/9 service.jpg" alt="Project-Based Fabrication Solutions"></div>
+                        <div class="service-display-info">
+                            <span class="service-display-tag">09 / PROJECTS</span>
+                            <h3>Project-Based Fabrication</h3>
+                            <p>End-to-end project delivery — from technical review and prototyping to bulk production, QC, and on-time dispatch.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="services-cta-link animate-on-scroll" data-reveal="top" data-delay="2">
-                <a href="services.html" class="btn btn-primary">View All Services <i class="fas fa-arrow-right"></i></a>
+                <a href="services.html" class="btn btn-primary services-explore-btn">Explore All Services <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -536,6 +543,20 @@
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box-glass animate-on-scroll" data-reveal="top">
+                <h2>Ready for Precision Fabrication?</h2>
+                <p>Reach out to us today to discuss your technical drawings and fabrication scope. Our engineers will get back to you with a competitive direct-from-factory quote within 24 hours.</p>
+                <div class="cta-buttons-container">
+                    <a href="contact.html" class="btn btn-light">Get a Custom Quote <i class="fas fa-calculator"></i></a>
+                    <a href="mailto:ambeengineering.306@gmail.com" class="btn btn-secondary">Email Our Team <i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="testimonials-section" id="testimonials">
         <div class="testimonials-bg-pattern"></div>
@@ -623,20 +644,18 @@
                             <span>Auto Components Ltd. — India</span>
                         </div>
                     </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-box-glass">
-                <h2>Ready for Precision Fabrication?</h2>
-                <p>Reach out to us today to discuss your technical drawings and fabrication scope. Our engineers will get back to you with a competitive direct-from-factory quote within 24 hours.</p>
-                <div class="cta-buttons-container">
-                    <a href="contact.html" class="btn btn-light">Get a Custom Quote <i class="fas fa-calculator"></i></a>
-                    <a href="mailto:ambeengineering.306@gmail.com" class="btn btn-secondary">Email Our Team <i class="fas fa-envelope"></i></a>
+                    <button type="button" class="testimonial-list-item" data-index="4"
+                        data-quote="From prototype to bulk production, Ambe Engineering handled our custom enclosure project flawlessly. The MS and SS fabrication quality exceeded our expectations, and their engineering team proactively suggested cost-effective design improvements."
+                        data-category="MS &amp; SS FABRICATION"
+                        data-name="Kiran Patel"
+                        data-role="Design Engineer, Electrical Panel Mfg. — Anand"
+                        data-initials="KP">
+                        <div class="testimonial-list-avatar">KP</div>
+                        <div class="testimonial-list-text">
+                            <strong>Kiran Patel</strong>
+                            <span>Electrical Panel Mfg. — Anand</span>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -646,39 +665,73 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-section footer-brand">
                     <div class="footer-logo">
-                        <img src="image&video/logos.png" alt="Ambe Engineering Co. Logo">
+                        <a href="index.html"><img src="image&video/now final logo.png" alt="Ambe Engineering Co. Logo"></a>
                     </div>
                     <p class="footer-desc">Leading provider of CNC fiber laser cutting, bending, and structural fabrication solutions in Gujarat.</p>
+                    <div class="footer-social">
+                        <span class="footer-social-label">Follow Us</span>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul class="footer-services-list">
+                        <li><a href="services.html">CNC Fiber Laser Cutting</a></li>
+                        <li><a href="services.html">CNC Bending</a></li>
+                        <li><a href="services.html">Sheet Metal Fabrication</a></li>
+                        <li><a href="services.html">Structural Fabrication</a></li>
+                        <li><a href="services.html">Industrial Fabrication Work</a></li>
+                        <li><a href="services.html">MS &amp; SS Fabrication</a></li>
+                        <li><a href="services.html">Welding Work</a></li>
+                        <li><a href="services.html">Custom Engineering Components</a></li>
+                        <li><a href="services.html">Project-Based Fabrication</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="machines.html">Machines</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="machines.html">Machine Capabilities</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p>📞 +91 7046238967, 9978633108</p>
-                    <p>📧 ambeengineering.306@gmail.com</p>
-                    <p>📍 F-22, Kamala Amrut Industrial Park, Alindra GIDC, Vadodara – 391775</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <span class="footer-contact-icon"><i class="fas fa-phone-alt"></i></span>
+                            <div class="footer-contact-text">
+                                <strong>Phone</strong>
+                                <a href="tel:+917046238967">+91 7046238967</a>, <a href="tel:+919978633108">9978633108</a>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="footer-contact-icon"><i class="fas fa-envelope"></i></span>
+                            <div class="footer-contact-text">
+                                <strong>Email</strong>
+                                <a href="mailto:ambeengineering.306@gmail.com">ambeengineering.306@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            <div class="footer-contact-text">
+                                <strong>Address</strong>
+                                <span>F-22, Kamala Amrut Industrial Park, Alindra GIDC, Vadodara – 391775</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Ambe Engineering Co. All Rights Reserved.</p>
+                <p>&copy; 2026 Ambe Engineering Co. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -687,6 +740,6 @@
     <div class="custom-cursor-dot"></div>
     <div class="custom-cursor-outline"></div>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>

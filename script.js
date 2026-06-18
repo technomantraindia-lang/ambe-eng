@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateCursor);
 
         // Add hovered class when mouse enters interactive elements
-        const hoverables = document.querySelectorAll('a, button, .btn, .btn-inquiry, .hamburger, .timeline-card, .machine-card-premium-dark, .service-card-premium-light, .service-showcase-card, .service-check-item, .testimonial-list-item, .collage-circle, .partner-navy-card, .partner-stat-item, .spec-badge-box, .nav-links a, .social-links a, .about-mini-feature, .mv-card');
+        const hoverables = document.querySelectorAll('a, button, .btn, .btn-inquiry, .hamburger, .timeline-card, .machine-card-premium-dark, .service-card-premium-light, .service-nav-btn, .service-check-item, .testimonial-list-item, .collage-circle, .partner-navy-card, .partner-stat-item, .spec-badge-box, .nav-links a, .social-links a, .about-mini-feature, .mv-card');
         hoverables.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorDot.classList.add('hovered');
@@ -731,25 +731,107 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // MISSION & VISION — animated connector lines
+    // MISSION & VISION — dynamic connector lines
     // ========================================
     const missionSection = document.querySelector('.mission-vision-section');
     if (missionSection) {
-        const mvPaths = missionSection.querySelectorAll('.mv-connector-path');
-        const pathMeta = [];
+        const mvVisual = missionSection.querySelector('.mv-visual');
+        const mvHub = missionSection.querySelector('.mv-hub');
+        const mvVisionCard = missionSection.querySelector('.mv-card-vision');
+        const mvMissionCard = missionSection.querySelector('.mv-card-mission');
+        const mvLinesArea = missionSection.querySelector('.mv-lines-area');
+        const mvSvg = missionSection.querySelector('.mv-connectors-svg');
+        const mvPathLeft = missionSection.querySelector('.mv-path-left');
+        const mvPathRight = missionSection.querySelector('.mv-path-right');
+        const mvVisionConnector = missionSection.querySelector('.mv-card-vision .mv-card-connector');
+        const mvMissionConnector = missionSection.querySelector('.mv-card-mission .mv-card-connector');
 
-        mvPaths.forEach((path, index) => {
-            const length = path.getTotalLength();
-            pathMeta.push({ path, length, delay: index === 0 ? 150 : 450 });
-            path.style.strokeDasharray = `${length} ${length}`;
-            path.style.strokeDashoffset = `${length}`;
-            path.style.transition = 'none';
-        });
+        let pathMeta = [];
+        let linesDrawn = false;
+        let linesFlowing = false;
 
-        const drawMissionLines = () => {
+        const mvConnectorMinWidth = 993;
+
+        function buildCurvePath(start, end) {
+            const drop = Math.max(18, (end.y - start.y) * 0.18);
+            const midY = start.y + drop + (end.y - start.y - drop) * 0.42;
+            return `M ${start.x} ${start.y} L ${start.x} ${start.y + drop} C ${start.x} ${midY}, ${end.x} ${midY}, ${end.x} ${end.y}`;
+        }
+
+        function getConnectorPoint(connectorEl, visualRect) {
+            const rect = connectorEl.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2 - visualRect.left,
+                y: rect.top + rect.height / 2 - visualRect.top
+            };
+        }
+
+        function resetPathAnimation() {
+            pathMeta.forEach(({ path, length }) => {
+                if (linesFlowing) {
+                    path.style.strokeDasharray = '8 8';
+                    path.style.strokeDashoffset = '0';
+                    path.style.transition = 'none';
+                } else if (linesDrawn) {
+                    path.style.strokeDasharray = `${length} ${length}`;
+                    path.style.strokeDashoffset = '0';
+                } else {
+                    path.style.strokeDasharray = `${length} ${length}`;
+                    path.style.strokeDashoffset = `${length}`;
+                    path.style.transition = 'none';
+                }
+            });
+        }
+
+        function layoutMissionConnectors() {
+            if (!mvVisual || !mvHub || !mvVisionCard || !mvMissionCard || !mvSvg || !mvVisionConnector || !mvMissionConnector) return false;
+
+            const showConnectors = window.innerWidth >= mvConnectorMinWidth;
+            if (mvLinesArea) {
+                mvLinesArea.style.display = showConnectors ? 'block' : 'none';
+            }
+            if (!showConnectors) return false;
+
+            const visualRect = mvVisual.getBoundingClientRect();
+            const hubRect = mvHub.getBoundingClientRect();
+
+            const width = Math.max(visualRect.width, 1);
+            const height = Math.max(visualRect.height, 1);
+
+            mvSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+
+            const start = {
+                x: hubRect.left + hubRect.width / 2 - visualRect.left,
+                y: hubRect.bottom - visualRect.top - 2
+            };
+
+            const endLeft = getConnectorPoint(mvVisionConnector, visualRect);
+            const endRight = getConnectorPoint(mvMissionConnector, visualRect);
+
+            mvPathLeft.setAttribute('d', buildCurvePath(start, endLeft));
+            mvPathRight.setAttribute('d', buildCurvePath(start, endRight));
+
+            pathMeta = [
+                { path: mvPathLeft, length: mvPathLeft.getTotalLength(), delay: 150 },
+                { path: mvPathRight, length: mvPathRight.getTotalLength(), delay: 450 }
+            ];
+
+            resetPathAnimation();
+            return true;
+        }
+
+        function drawMissionLines() {
+            if (linesDrawn) return;
+            if (!layoutMissionConnectors()) return;
+
+            linesDrawn = true;
             missionSection.classList.add('mv-lines-drawn');
 
             pathMeta.forEach(({ path, length, delay }) => {
+                path.style.strokeDasharray = `${length} ${length}`;
+                path.style.strokeDashoffset = `${length}`;
+                path.style.transition = 'none';
+
                 setTimeout(() => {
                     path.style.transition = 'stroke-dashoffset 1.4s ease-out';
                     path.style.strokeDashoffset = '0';
@@ -757,14 +839,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             setTimeout(() => {
+                linesFlowing = true;
                 missionSection.classList.add('mv-lines-flow');
-                mvPaths.forEach(path => {
-                    path.style.transition = 'none';
-                    path.style.strokeDasharray = '8 8';
-                    path.style.strokeDashoffset = '0';
-                });
+                mvPathLeft.style.transition = 'none';
+                mvPathRight.style.transition = 'none';
+                mvPathLeft.style.strokeDasharray = '8 8';
+                mvPathRight.style.strokeDasharray = '8 8';
+                mvPathLeft.style.strokeDashoffset = '0';
+                mvPathRight.style.strokeDashoffset = '0';
             }, 2000);
-        };
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                layoutMissionConnectors();
+            }, 120);
+        });
+
+        window.addEventListener('load', () => {
+            layoutMissionConnectors();
+            setTimeout(layoutMissionConnectors, 400);
+        });
+
+        if (mvVisual && typeof ResizeObserver !== 'undefined') {
+            const mvResizeObserver = new ResizeObserver(() => layoutMissionConnectors());
+            mvResizeObserver.observe(mvVisual);
+        }
+
+        layoutMissionConnectors();
 
         const mvObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -866,6 +970,39 @@ document.addEventListener('DOMContentLoaded', () => {
             testimonialIndex = (testimonialIndex + 1) % testimonialItems.length;
             testimonialItems[testimonialIndex].click();
         }, 6000);
+    }
+
+    // ========================================
+    // SERVICES — interactive panel switcher
+    // ========================================
+    const serviceNavBtns = document.querySelectorAll('.service-nav-btn');
+    const serviceSlides = document.querySelectorAll('.service-display-slide');
+
+    if (serviceNavBtns.length && serviceSlides.length) {
+        let serviceIndex = 0;
+        let serviceAutoTimer;
+
+        const showService = (index) => {
+            serviceIndex = index;
+            serviceNavBtns.forEach(btn => btn.classList.remove('active'));
+            serviceSlides.forEach(slide => slide.classList.remove('active'));
+            serviceNavBtns[index].classList.add('active');
+            serviceSlides[index].classList.add('active');
+        };
+
+        serviceNavBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                showService(index);
+                clearInterval(serviceAutoTimer);
+                serviceAutoTimer = setInterval(() => {
+                    showService((serviceIndex + 1) % serviceNavBtns.length);
+                }, 5000);
+            });
+        });
+
+        serviceAutoTimer = setInterval(() => {
+            showService((serviceIndex + 1) % serviceNavBtns.length);
+        }, 5000);
     }
 });
 
