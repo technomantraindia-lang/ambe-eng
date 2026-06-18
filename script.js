@@ -735,6 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     const missionSection = document.querySelector('.mission-vision-section');
     if (missionSection) {
+        const mvConnectorStem = 14;
         const mvVisual = missionSection.querySelector('.mv-visual');
         const mvHub = missionSection.querySelector('.mv-hub');
         const mvVisionCard = missionSection.querySelector('.mv-card-vision');
@@ -762,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = connectorEl.getBoundingClientRect();
             return {
                 x: rect.left + rect.width / 2 - visualRect.left,
-                y: rect.top + rect.height / 2 - visualRect.top
+                y: rect.top - mvConnectorStem - visualRect.top
             };
         }
 
