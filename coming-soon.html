@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Ambe Engineering Co.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .coming-soon-container {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2233 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .coming-soon-icon {
+            font-size: 6rem;
+            color: #d4a574;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .coming-soon-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .coming-soon-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .coming-soon-description {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(212, 165, 116, 0.1);
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            padding: 20px 30px;
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            color: #d4a574;
+            font-weight: 700;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .coming-soon-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .coming-soon-buttons a {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-notify {
+            background: #d4a574;
+            color: #1a3a52;
+        }
+
+        .btn-notify:hover {
+            background: #e8b887;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-home {
+            background: transparent;
+            color: white;
+            border: 2px solid #d4a574;
+        }
+
+        .btn-home:hover {
+            background: #d4a574;
+            color: #1a3a52;
+            transform: translateY(-3px);
+        }
+
+        .background-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .coming-soon-shape {
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .coming-soon-shape1 {
+            width: 400px;
+            height: 400px;
+            background: #d4a574;
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .coming-soon-shape2 {
+            width: 300px;
+            height: 300px;
+            background: #d4a574;
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .coming-soon-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .coming-soon-content p {
+                font-size: 1rem;
+            }
+
+            .coming-soon-icon {
+                font-size: 4rem;
+            }
+
+            .countdown {
+                gap: 15px;
+            }
+
+            .countdown-item {
+                padding: 15px 20px;
+                min-width: 80px;
+            }
+
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+
+            .coming-soon-buttons {
+                flex-direction: column;
+            }
+
+            .coming-soon-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="image&video/final logo.png" alt="Ambe Engineering Logo">
+                <span>AMBE ENGINEERING</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="machines.html">Machine Capabilities</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-container">
+        <div class="background-shapes">
+            <div class="coming-soon-shape coming-soon-shape1"></div>
+            <div class="coming-soon-shape coming-soon-shape2"></div>
+        </div>
+
+        <div class="coming-soon-content">
+            <div class="coming-soon-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h1>Coming Soon</h1>
+            <p>Something Amazing is on the Way!</p>
+            
+            <div class="coming-soon-description">
+                <p>We're working hard to bring you an exciting new experience. Stay tuned for the launch of this amazing new section.</p>
+            </div>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number">72</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number">24</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number">45</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="coming-soon-buttons">
+                <a href="contact.html" class="coming-soon-buttons btn-notify">Notify Me</a>
+                <a href="index.html" class="coming-soon-buttons btn-home">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
