@@ -2263,9 +2263,10 @@ ul {
     font-family: 'Rajdhani', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    color: rgba(15, 34, 61, 0.07);
+    color: rgba(15, 34, 61, 0.14);
     line-height: 1;
-    z-index: 1;
+    z-index: 3;
+    pointer-events: none;
 }
 
 .timeline-card-inner {
@@ -2273,6 +2274,8 @@ ul {
     align-items: flex-start;
     gap: 16px;
     padding: 22px 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-icon-box {
@@ -2317,6 +2320,13 @@ ul {
     color: var(--text-muted);
     font-size: 0.85rem;
     line-height: 1.65;
+}
+
+.timeline-card-body {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
 }
 
 /* ========================================
