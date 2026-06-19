@@ -5735,3 +5735,427 @@ ul {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.2); }
 }
+
+/* ========================================
+   CNC FIBER LASER CUTTING SERVICE PAGE
+   ======================================== */
+.laser-cutting-hero {
+    position: relative;
+    min-height: 600px;
+    background: url('image&video/service 1.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 160px 0;
+    overflow: hidden;
+    color: white;
+}
+
+.laser-cutting-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        rgba(15, 34, 61, 0.96) 0%, 
+        rgba(15, 34, 61, 0.85) 50%, 
+        rgba(37, 99, 235, 0.4) 100%);
+    z-index: 1;
+}
+
+.laser-cutting-hero .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.laser-hero-content {
+    max-width: 650px;
+}
+
+.laser-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--secondary-light);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.laser-hero-content h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.laser-hero-content h1 span {
+    color: var(--secondary-light);
+}
+
+.laser-hero-content p {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.laser-hero-actions {
+    display: flex;
+    align-items: center;
+}
+
+.laser-overview-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.laser-overview-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.overview-text h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.overview-text h2 span {
+    color: var(--secondary-color);
+}
+
+.overview-text p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.75;
+    margin-bottom: 16px;
+}
+
+.overview-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.overview-image-wrapper img {
+    border-radius: var(--radius-lg);
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-accent-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--radius-lg);
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.laser-overview-grid:hover .image-accent-border {
+    transform: translate(-10px, -10px);
+}
+
+.capabilities-section {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.cap-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(15, 34, 61, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cap-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(37, 99, 235, 0.15);
+}
+
+.cap-icon-box {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.cap-card:hover .cap-icon-box {
+    background: var(--secondary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.cap-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 12px;
+}
+
+.cap-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cap-table tr {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.cap-table tr:last-child {
+    border-bottom: none;
+}
+
+.cap-table td {
+    padding: 14px 0;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.cap-table td.cap-value {
+    text-align: right;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--secondary-color);
+}
+
+.advantages-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.advantage-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 30px 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(15, 34, 61, 0.02);
+}
+
+.advantage-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: var(--shadow-md), 0 0 20px rgba(37, 99, 235, 0.03);
+}
+
+.adv-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover .adv-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--secondary-light);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+.advantage-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.advantage-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.faq-section-laser {
+    padding: 100px 0;
+    background: #f8fafc;
+}
+
+.faq-grid-laser {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.faq-card {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(15, 34, 61, 0.02);
+    transition: all 0.3s ease;
+}
+
+.faq-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 34, 61, 0.04);
+}
+
+.faq-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.faq-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.cta-laser {
+    padding: 90px 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-laser::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cta-laser .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.cta-laser h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.cta-laser p {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Responsive Rules for Laser Inner Page */
+@media (max-width: 991px) {
+    .laser-cutting-hero {
+        min-height: 500px;
+        padding: 130px 0;
+    }
+    .laser-hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .laser-overview-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .overview-image {
+        max-width: 500px;
+        margin: 0 auto;
+        order: -1;
+    }
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .faq-grid-laser {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .laser-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .laser-hero-actions .btn {
+        margin-left: 0 !important;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .laser-hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .overview-text h2 {
+        font-size: 2rem;
+    }
+}
