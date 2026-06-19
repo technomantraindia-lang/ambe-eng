@@ -84,6 +84,19 @@ if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        const email = contactForm.querySelector('#email').value;
+        const phone = contactForm.querySelector('#phone').value;
+
+        if (!validateEmail(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+
+        if (!validatePhone(phone)) {
+            showNotification('Please enter a valid phone number', 'error');
+            return;
+        }
+
         // Get form data
         const formData = new FormData(this);
         const data = {
@@ -308,17 +321,23 @@ function updateActiveNavLink() {
 
     window.addEventListener('scroll', () => {
         let current = '';
+        const scrollPos = window.pageYOffset || window.scrollY;
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
+            const sectionId = section.getAttribute('id');
+            if (sectionId && scrollPos >= sectionTop - 200) {
+                current = sectionId;
             }
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href !== '#') {
+                link.classList.remove('active');
+                if (href.slice(1) === current) {
+                    link.classList.add('active');
+                }
             }
         });
     });
@@ -480,24 +499,7 @@ function validatePhone(phone) {
     return re.test(phone) || phone === '';
 }
 
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        const email = contactForm.querySelector('#email').value;
-        const phone = contactForm.querySelector('#phone').value;
-
-        if (!validateEmail(email)) {
-            e.preventDefault();
-            showNotification('Please enter a valid email address', 'error');
-            return;
-        }
-
-        if (!validatePhone(phone)) {
-            e.preventDefault();
-            showNotification('Please enter a valid phone number', 'error');
-            return;
-        }
-    });
-}
+// Redundant submit listener removed (validation is merged with submission above)
 
 // ========================================
 // PRINT FUNCTION
@@ -592,6 +594,55 @@ scrollTopBtn.addEventListener('mouseleave', () => {
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Ambe Engineering Website Loaded Successfully');
+
+    // ========================================
+    // FLOATING WHATSAPP BUTTON INJECTION
+    // ========================================
+    const whatsappBtn = document.createElement('a');
+    whatsappBtn.href = 'https://wa.me/917046238967';
+    whatsappBtn.target = '_blank';
+    whatsappBtn.className = 'whatsapp-float';
+    whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    whatsappBtn.setAttribute('aria-label', 'Chat on WhatsApp');
+    
+    // Inline styling for instant rendering, bypassing any CSS caching
+    whatsappBtn.style.position = 'fixed';
+    whatsappBtn.style.bottom = '100px';
+    whatsappBtn.style.right = '30px';
+    whatsappBtn.style.width = '55px';
+    whatsappBtn.style.height = '55px';
+    whatsappBtn.style.backgroundColor = '#25d366';
+    whatsappBtn.style.color = '#ffffff';
+    whatsappBtn.style.borderRadius = '50%';
+    whatsappBtn.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.25)';
+    whatsappBtn.style.zIndex = '998';
+    whatsappBtn.style.display = 'flex';
+    whatsappBtn.style.alignItems = 'center';
+    whatsappBtn.style.justifyContent = 'center';
+    whatsappBtn.style.textDecoration = 'none';
+    whatsappBtn.style.transition = 'all 0.3s ease';
+
+    // Set styling for the inner icon
+    const icon = whatsappBtn.querySelector('i');
+    if (icon) {
+        icon.style.fontSize = '28px';
+        icon.style.color = '#ffffff';
+        icon.style.lineHeight = '1';
+    }
+
+    // Add JS hover listeners for the scaling animation
+    whatsappBtn.addEventListener('mouseenter', () => {
+        whatsappBtn.style.backgroundColor = '#20ba5a';
+        whatsappBtn.style.transform = 'scale(1.1)';
+        whatsappBtn.style.boxShadow = '0 8px 25px rgba(37, 211, 102, 0.45)';
+    });
+    whatsappBtn.addEventListener('mouseleave', () => {
+        whatsappBtn.style.backgroundColor = '#25d366';
+        whatsappBtn.style.transform = 'scale(1)';
+        whatsappBtn.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.25)';
+    });
+
+    document.body.appendChild(whatsappBtn);
     
     // ========================================
     // CUSTOM PREMIUM CURSOR ANIMATION
@@ -628,7 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateCursor);
 
         // Add hovered class when mouse enters interactive elements
-        const hoverables = document.querySelectorAll('a, button, .btn, .btn-inquiry, .hamburger, .timeline-card, .machine-card-premium-dark, .service-card-premium-light, .service-nav-btn, .service-check-item, .testimonial-list-item, .collage-circle, .partner-navy-card, .partner-stat-item, .spec-badge-box, .nav-links a, .social-links a, .about-mini-feature, .mv-card');
+        const hoverables = document.querySelectorAll('a, button, .btn, .btn-inquiry, .hamburger, .timeline-card, .machine-card-premium-dark, .service-card-premium-light, .service-nav-btn, .service-check-item, .testimonial-list-item, .collage-circle, .partner-navy-card, .partner-stat-item, .spec-badge-box, .nav-links a, .social-links a, .about-mini-feature, .mv-card, .service-card-premium-row');
         hoverables.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorDot.classList.add('hovered');
@@ -1005,6 +1056,87 @@ document.addEventListener('DOMContentLoaded', () => {
             showService((serviceIndex + 1) % serviceNavBtns.length);
         }, 5000);
     }
+
+    // ========================================
+    // CERTIFICATE MODAL LIGHTBOX
+    // ========================================
+    const certCards = document.querySelectorAll('.qa-cert-card');
+    certCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const modal = document.createElement('div');
+            modal.className = 'cert-lightbox-modal';
+            modal.style.cssText = `
+                position: fixed;
+                inset: 0;
+                background: rgba(15, 34, 61, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                cursor: zoom-out;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                position: relative;
+                max-width: 90%;
+                max-height: 90vh;
+                transform: scale(0.9);
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            `;
+            
+            const img = document.createElement('img');
+            img.src = 'image&video/certificate.png';
+            img.alt = 'Ambe Engineering ISO Certificate';
+            img.style.cssText = `
+                max-width: 100%;
+                max-height: 85vh;
+                border-radius: 12px;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+                border: 2px solid rgba(255, 255, 255, 0.1);
+            `;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: -45px;
+                right: 0;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 2.5rem;
+                cursor: pointer;
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            `;
+            closeBtn.addEventListener('mouseenter', () => closeBtn.style.opacity = '1');
+            closeBtn.addEventListener('mouseleave', () => closeBtn.style.opacity = '0.8');
+
+            content.appendChild(img);
+            content.appendChild(closeBtn);
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            // Trigger animation
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                content.style.transform = 'scale(1)';
+            }, 10);
+            
+            // Close actions
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                content.style.transform = 'scale(0.9)';
+                setTimeout(() => modal.remove(), 300);
+            };
+            
+            modal.addEventListener('click', closeModal);
+            closeBtn.addEventListener('click', closeModal);
+        });
+    });
 });
 
 // ========================================

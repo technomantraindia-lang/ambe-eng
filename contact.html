@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Ambe Engineering Co.</title>
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -33,9 +33,16 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <h1>Contact Us</h1>
-        <p>Get in Touch with Our Team</p>
+    <section class="contact-hero-header">
+        <div class="container">
+            <div class="contact-hero-content animate-on-scroll" data-reveal="left">
+                <div class="contact-hero-tag">
+                    <i class="fas fa-headset"></i> <span>Client Support</span>
+                </div>
+                <h1>Let's Connect &amp; <span>Build Together</span></h1>
+                <p>Have a custom engineering or volume metal fabrication project? Reach out to our engineering team today for technical consultation, detailed quoting, and factory-direct support.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
@@ -46,32 +53,66 @@
                 <div class="contact-form-wrapper">
                     <h2>Send us a Message</h2>
                     <form class="contact-form" id="contactForm">
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" ">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <input type="text" id="company" name="company" placeholder=" ">
                             <label for="company">Company Name</label>
-                            <input type="text" id="company" name="company">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <input type="text" id="subject" name="subject" placeholder=" " required>
                             <label for="subject">Subject *</label>
-                            <input type="text" id="subject" name="subject" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group floating-group">
+                            <textarea id="message" name="message" rows="6" placeholder=" " required></textarea>
                             <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+
+                        <!-- Premium File Uploader -->
+                        <div class="form-group file-upload-group">
+                            <label class="upload-label">Attach Drawings / CAD Files</label>
+                            <div class="file-upload-wrapper" id="fileUploadWrapper">
+                                <input type="file" id="attachment" name="attachment" accept=".pdf,.dxf,.dwg,.step,.stp,.jpg,.jpeg,.png" style="display:none;">
+                                <div class="file-upload-trigger" id="fileUploadTrigger">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span class="upload-text">Drag &amp; drop files here or click to browse</span>
+                                    <span class="upload-sub">Accepted: PDF, DXF, DWG, STEP, JPG, PNG (Max 10MB)</span>
+                                </div>
+                                <div class="file-preview-card" id="filePreviewCard" style="display: none;">
+                                    <div class="file-preview-icon">
+                                        <i class="fas fa-file-invoice"></i>
+                                    </div>
+                                    <div class="file-preview-details">
+                                        <span class="file-preview-name" id="filePreviewName">drawing_rev1.dxf</span>
+                                        <span class="file-preview-size" id="filePreviewSize">1.2 MB</span>
+                                    </div>
+                                    <button type="button" class="file-preview-remove" id="filePreviewRemove" aria-label="Remove file">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
                     </form>
+
+                    <!-- Success State Screen (hidden initially) -->
+                    <div class="form-success-message" id="formSuccessMessage" style="display: none;">
+                        <div class="success-icon-wrapper">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3>Inquiry Sent Successfully!</h3>
+                        <p>Thank you, <strong id="successCustomerName">Client</strong>. Your request has been assigned Reference ID: <strong id="successRefId">#AMBE-2026-9481</strong>. Our engineering team will review your drawings and send you a detailed technical quote shortly.</p>
+                        <button type="button" class="btn btn-primary" id="btnResetForm">Send Another Message <i class="fas fa-redo" style="margin-left: 8px;"></i></button>
+                    </div>
                 </div>
 
                 <!-- Contact Info -->
@@ -262,6 +303,9 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=11"></script>
+    <!-- Custom Premium Cursor elements -->
+    <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
 </body>
 </html>
