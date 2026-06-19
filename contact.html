@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Ambe Engineering Co.</title>
-    <link rel="stylesheet" href="styles.css?v=16">
+    <link rel="stylesheet" href="styles.css?v=17">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -78,29 +78,6 @@
                             <label for="message">Message *</label>
                         </div>
 
-                        <!-- Premium File Uploader -->
-                        <div class="form-group file-upload-group">
-                            <label class="upload-label">Attach Drawings / CAD Files</label>
-                            <div class="file-upload-wrapper" id="fileUploadWrapper">
-                                <input type="file" id="attachment" name="attachment" accept=".pdf,.dxf,.dwg,.step,.stp,.jpg,.jpeg,.png" style="display:none;">
-                                <div class="file-upload-trigger" id="fileUploadTrigger">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <span class="upload-text">Drag &amp; drop files here or click to browse</span>
-                                    <span class="upload-sub">Accepted: PDF, DXF, DWG, STEP, JPG, PNG (Max 10MB)</span>
-                                </div>
-                                <div class="file-preview-card" id="filePreviewCard" style="display: none;">
-                                    <div class="file-preview-icon">
-                                        <i class="fas fa-file-invoice"></i>
-                                    </div>
-                                    <div class="file-preview-details">
-                                        <span class="file-preview-name" id="filePreviewName">drawing_rev1.dxf</span>
-                                        <span class="file-preview-size" id="filePreviewSize">1.2 MB</span>
-                                    </div>
-                                    <button type="button" class="file-preview-remove" id="filePreviewRemove" aria-label="Remove file">&times;</button>
-                                </div>
-                            </div>
-                        </div>
-
                         <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
                     </form>
 
@@ -110,7 +87,7 @@
                             <i class="fas fa-check"></i>
                         </div>
                         <h3>Inquiry Sent Successfully!</h3>
-                        <p>Thank you, <strong id="successCustomerName">Client</strong>. Your request has been assigned Reference ID: <strong id="successRefId">#AMBE-2026-9481</strong>. Our engineering team will review your drawings and send you a detailed technical quote shortly.</p>
+                        <p>Thank you, <strong id="successCustomerName">Client</strong>. Your request has been assigned Reference ID: <strong id="successRefId">#AMBE-2026-9481</strong>. Our engineering team will review your inquiry and contact you shortly.</p>
                         <button type="button" class="btn btn-primary" id="btnResetForm">Send Another Message <i class="fas fa-redo" style="margin-left: 8px;"></i></button>
                     </div>
                 </div>
