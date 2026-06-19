@@ -5814,6 +5814,12 @@ ul {
     align-items: center;
 }
 
+.laser-hero-actions .btn-specs {
+    margin-left: 15px;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
 .laser-overview-section {
     padding: 100px 0;
     background: #ffffff;
@@ -6128,6 +6134,16 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .capabilities-section,
+    .advantages-section,
+    .faq-section-laser,
+    .laser-overview-section {
+        padding: 60px 0;
+    }
+    .overview-image-wrapper {
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
     .capabilities-grid {
         grid-template-columns: 1fr;
         gap: 30px;
