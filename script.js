@@ -77,15 +77,118 @@ if (navbar) {
 }
 
 // ========================================
-// CONTACT FORM HANDLING
+// CONTACT FORM HANDLING & PREMIUM FILE UPLOADER
 // ========================================
 const contactForm = document.getElementById('contactForm');
+const formSuccessMessage = document.getElementById('formSuccessMessage');
+const fileUploadWrapper = document.getElementById('fileUploadWrapper');
+const fileInput = document.getElementById('attachment');
+const fileUploadTrigger = document.getElementById('fileUploadTrigger');
+const filePreviewCard = document.getElementById('filePreviewCard');
+const filePreviewName = document.getElementById('filePreviewName');
+const filePreviewSize = document.getElementById('filePreviewSize');
+const filePreviewRemove = document.getElementById('filePreviewRemove');
+const btnResetForm = document.getElementById('btnResetForm');
+
+// File Upload Logic
+if (fileUploadWrapper && fileInput) {
+    // Click trigger
+    fileUploadWrapper.addEventListener('click', function (e) {
+        // Prevent click if clicking the remove button
+        if (e.target.closest('#filePreviewRemove')) {
+            return;
+        }
+        fileInput.click();
+    });
+
+    // Drag and drop event listeners
+    ['dragenter', 'dragover'].forEach(eventName => {
+        fileUploadWrapper.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        fileUploadWrapper.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileUploadWrapper.classList.add('dragover');
+    }
+
+    function unhighlight(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        fileUploadWrapper.classList.remove('dragover');
+    }
+
+    // Handle dropped files
+    fileUploadWrapper.addEventListener('drop', function (e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files.length > 0) {
+            fileInput.files = files;
+            handleFile(files[0]);
+        }
+    });
+
+    // Handle selected files
+    fileInput.addEventListener('change', function () {
+        if (this.files.length > 0) {
+            handleFile(this.files[0]);
+        }
+    });
+
+    // Remove file handler
+    if (filePreviewRemove) {
+        filePreviewRemove.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            resetFileUploader();
+        });
+    }
+}
+
+function handleFile(file) {
+    // Validation: check file size (max 10MB)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (file.size > maxSize) {
+        showNotification('File exceeds 10MB size limit.', 'error');
+        resetFileUploader();
+        return;
+    }
+
+    // Format file size
+    let formattedSize = '';
+    if (file.size < 1024 * 1024) {
+        formattedSize = (file.size / 1024).toFixed(1) + ' KB';
+    } else {
+        formattedSize = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    // Update preview details
+    if (filePreviewName) filePreviewName.textContent = file.name;
+    if (filePreviewSize) filePreviewSize.textContent = formattedSize;
+
+    // Show preview, hide trigger
+    if (fileUploadTrigger) fileUploadTrigger.style.display = 'none';
+    if (filePreviewCard) filePreviewCard.style.display = 'flex';
+}
+
+function resetFileUploader() {
+    if (fileInput) fileInput.value = '';
+    if (fileUploadTrigger) fileUploadTrigger.style.display = 'flex';
+    if (filePreviewCard) filePreviewCard.style.display = 'none';
+}
+
+// Form Submission logic
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const email = contactForm.querySelector('#email').value;
-        const phone = contactForm.querySelector('#phone').value;
+        const name = contactForm.querySelector('#name').value.trim();
+        const email = contactForm.querySelector('#email').value.trim();
+        const phone = contactForm.querySelector('#phone').value.trim();
 
         if (!validateEmail(email)) {
             showNotification('Please enter a valid email address', 'error');
@@ -97,22 +200,36 @@ if (contactForm) {
             return;
         }
 
-        // Get form data
-        const formData = new FormData(this);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            company: formData.get('company'),
-            subject: formData.get('subject'),
-            message: formData.get('message')
-        };
+        // Show success notification and replace form with success state
+        showNotification('Message sent successfully!', 'success');
 
-        // Show success message (in real app, send to server)
-        showNotification('Message sent successfully! We will contact you soon.', 'success');
+        // Populate Success screen details
+        const successCustomerName = document.getElementById('successCustomerName');
+        const successRefId = document.getElementById('successRefId');
         
-        // Reset form
-        contactForm.reset();
+        if (successCustomerName) successCustomerName.textContent = name;
+        if (successRefId) {
+            const randomId = Math.floor(1000 + Math.random() * 9000);
+            successRefId.textContent = `#AMBE-2026-${randomId}`;
+        }
+
+        // Hide form and show success screen
+        contactForm.style.display = 'none';
+        if (formSuccessMessage) formSuccessMessage.style.display = 'block';
+    });
+}
+
+// Reset form to write another message
+if (btnResetForm) {
+    btnResetForm.addEventListener('click', function () {
+        if (contactForm) {
+            contactForm.reset();
+            resetFileUploader();
+            contactForm.style.display = 'block';
+        }
+        if (formSuccessMessage) {
+            formSuccessMessage.style.display = 'none';
+        }
     });
 }
 
