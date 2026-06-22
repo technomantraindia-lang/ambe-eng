@@ -6204,7 +6204,8 @@ ul {
    ======================================== */
 .machines-hero-header {
     position: relative;
-    padding: 240px 24px 220px;
+    width: 100%;
+    aspect-ratio: 2172 / 724;
     background: url('image&video/machine capabilities.png') no-repeat;
     background-size: cover;
     background-position: center;
@@ -6214,7 +6215,6 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 650px;
 }
 
 .equipment-badge {
@@ -6242,6 +6242,7 @@ ul {
         rgba(15, 34, 61, 0.75) 50%, 
         rgba(11, 25, 41, 0.92) 100%);
     z-index: 1;
+    display: none;
 }
 
 .machines-hero-header .container {
@@ -6620,8 +6621,8 @@ ul {
 /* Responsive Rules for Machines Page */
 @media (max-width: 991px) {
     .machines-hero-header {
-        padding: 180px 24px 160px;
-        min-height: 480px;
+        padding: 0;
+        min-height: auto;
     }
     .machines-hero-header h1 {
         font-size: 2.8rem;
