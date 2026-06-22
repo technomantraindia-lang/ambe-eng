@@ -612,6 +612,38 @@ scrollTopBtn.addEventListener('mouseleave', () => {
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Ambe Engineering Website Loaded Successfully');
+ 
+    // ========================================
+    // FAQ ACCORDION LOGIC (Laser Page)
+    // ========================================
+    const faqItems = document.querySelectorAll('.faq-accordion-item');
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-accordion-header');
+        const content = item.querySelector('.faq-accordion-content');
+        
+        if (header && content) {
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items first (optional, but makes it look very professional)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-accordion-content').style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle active state
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        }
+    });
 
     // ========================================
     // FLOATING WHATSAPP BUTTON INJECTION
