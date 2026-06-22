@@ -1155,6 +1155,47 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.addEventListener('click', closeModal);
         });
     });
+
+    // ========================================
+    // INTERACTIVE SUPPORTING EQUIPMENT CIRCLE
+    // ========================================
+    const orbitPoints = document.querySelectorAll('.orbit-point');
+    const defaultState = document.querySelector('.center-circle .default-state');
+    const detailStates = document.querySelectorAll('.center-circle .detail-state');
+
+    if (orbitPoints.length > 0 && defaultState && detailStates.length > 0) {
+        orbitPoints.forEach(point => {
+            point.addEventListener('mouseenter', () => {
+                const targetPointNum = point.getAttribute('data-point');
+
+                // Set current point active
+                orbitPoints.forEach(p => p.classList.remove('active'));
+                point.classList.add('active');
+
+                // Hide default state
+                defaultState.classList.remove('active');
+
+                // Show corresponding detail state
+                detailStates.forEach(detail => {
+                    const detailNum = detail.getAttribute('data-detail');
+                    if (detailNum === targetPointNum) {
+                        detail.classList.add('active');
+                    } else {
+                        detail.classList.remove('active');
+                    }
+                });
+            });
+
+            point.addEventListener('mouseleave', () => {
+                // Remove active states
+                orbitPoints.forEach(p => p.classList.remove('active'));
+                detailStates.forEach(detail => detail.classList.remove('active'));
+
+                // Revert to default state
+                defaultState.classList.add('active');
+            });
+        });
+    }
 });
 
 // ========================================

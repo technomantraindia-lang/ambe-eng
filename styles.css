@@ -5966,14 +5966,37 @@ ul {
 
 .advantages-section {
     padding: 100px 0;
-    background: #ffffff;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.advantages-section .section-title {
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.advantages-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary-color);
+    border-radius: 2px;
 }
 
 .advantages-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .advantage-card {
@@ -6175,3 +6198,765 @@ ul {
         font-size: 2rem;
     }
 }
+
+/* ========================================
+   MACHINE CAPABILITIES PAGE STYLES
+   ======================================== */
+.machines-hero-header {
+    position: relative;
+    padding: 240px 24px 220px;
+    background: url('image&video/machine capabilities.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 650px;
+}
+
+.equipment-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--secondary-color);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.05);
+}
+
+.machines-hero-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(7, 20, 40, 0.88) 0%, 
+        rgba(15, 34, 61, 0.75) 50%, 
+        rgba(11, 25, 41, 0.92) 100%);
+    z-index: 1;
+}
+
+.machines-hero-header .container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.machines-hero-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.machines-hero-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.machines-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.machine-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 45px;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: stretch;
+    gap: 60px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.machine-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(37, 99, 235, 0.2);
+    box-shadow: var(--shadow-md), 0 10px 30px rgba(37, 99, 235, 0.04);
+}
+
+.machine-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--secondary-color), var(--secondary-light));
+    opacity: 0;
+    transition: opacity 0.45s ease;
+}
+
+.machine-card:hover::before {
+    opacity: 1;
+}
+
+.machine-image {
+    width: 48%;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.machine-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.machine-card:hover .machine-image img {
+    transform: scale(1.05) rotate(0.5deg);
+}
+
+.machine-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.6s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.machine-card:hover .machine-image::after {
+    left: 100%;
+}
+
+.machine-details {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.machine-details h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.machine-description {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.machine-details h4 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.spec {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spec:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.05);
+}
+
+.spec-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.spec-label i {
+    color: var(--secondary-color);
+    font-size: 0.82rem;
+    transition: transform 0.3s ease;
+}
+
+.spec:hover .spec-label i {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.spec-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.spec:hover .spec-value {
+    color: var(--secondary-color);
+}
+
+.machine-details .capabilities-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+}
+
+.capabilities-list li {
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(15, 34, 61, 0.02);
+}
+
+.capabilities-list li:hover {
+    transform: translateX(4px) translateY(-1px);
+    background: rgba(37, 99, 235, 0.04);
+    border-color: rgba(37, 99, 235, 0.15);
+    color: var(--secondary-color);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.capabilities-list li i {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+.capabilities-list li:hover i {
+    transform: scale(1.2);
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.equipment-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 35px 24px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(15, 34, 61, 0.02);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.equipment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--secondary-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.equipment-card:hover::before {
+    transform: scaleX(1);
+}
+
+.equipment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md), 0 10px 25px rgba(37, 99, 235, 0.03);
+    border-color: rgba(37, 99, 235, 0.15);
+}
+
+.equipment-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.equipment-card:hover .equipment-icon {
+    background: var(--secondary-color);
+    color: white;
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+}
+
+.equipment-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.equipment-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.advantage-item {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-top: 3px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 35px 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(15, 34, 61, 0.03);
+    position: relative;
+}
+
+.advantage-item:hover {
+    transform: translateY(-8px);
+    border-color: rgba(37, 99, 235, 0.12);
+    border-top-color: var(--secondary-color);
+    box-shadow: 0 20px 45px rgba(37, 99, 235, 0.12);
+}
+
+.advantage-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(37, 99, 235, 0.06);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin: 0 auto 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.advantage-item:hover .advantage-icon {
+    background: var(--secondary-color);
+    color: white;
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.advantage-item h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+
+.advantage-item p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+/* Responsive Rules for Machines Page */
+@media (max-width: 991px) {
+    .machines-hero-header {
+        padding: 180px 24px 160px;
+        min-height: 480px;
+    }
+    .machines-hero-header h1 {
+        font-size: 2.8rem;
+    }
+    .machine-card {
+        flex-direction: column !important;
+        gap: 35px;
+        padding: 30px;
+    }
+    .machine-image {
+        width: 100%;
+        min-height: 300px;
+    }
+    .machine-details {
+        width: 100%;
+    }
+    .equipment-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .machines-section {
+        padding: 65px 0;
+    }
+    .specs-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .machine-details .capabilities-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .advantages-section {
+        padding: 70px 0;
+    }
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .advantage-item {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .machines-hero-header h1 {
+        font-size: 2.2rem;
+    }
+    .machines-hero-header p {
+        font-size: 1.1rem;
+    }
+    .equipment-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ========================================
+   INTERACTIVE SUPPORTING EQUIPMENT CIRCLE
+   ======================================== */
+.equipment-circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    width: 100%;
+}
+
+.desktop-only-circle {
+    display: flex;
+}
+
+.mobile-only-grid {
+    display: none;
+}
+
+.equipment-circle-wrapper {
+    position: relative;
+    width: 580px;
+    height: 580px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orbit-ring-outer {
+    width: 500px;
+    height: 500px;
+    border: 1.5px solid rgba(96, 165, 250, 0.22);
+}
+
+.orbit-ring-inner {
+    width: 410px;
+    height: 410px;
+    border: 1.5px dashed rgba(96, 165, 250, 0.35);
+    animation: spinRing 50s linear infinite;
+}
+
+@keyframes spinRing {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.center-circle {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 15px 45px rgba(15, 34, 61, 0.1);
+    border: 6px solid #f8fafc;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.center-content {
+    position: absolute;
+    inset: 0;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.95);
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.45s;
+    z-index: 2;
+}
+
+.center-content.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 3;
+}
+
+.center-logo {
+    margin-bottom: 16px;
+    max-width: 170px;
+}
+
+.center-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.center-instruction {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    line-height: 1.55;
+    max-width: 220px;
+}
+
+.detail-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    animation: pulseIcon 2s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.25); }
+    50% { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+}
+
+.center-content.detail-state h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.center-content.detail-state p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.orbit-point {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 99, 235, 0.15);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(15, 34, 61, 0.05);
+    transform: translate(-50%, -50%);
+}
+
+.point-1 { top: 40px; left: 50%; }
+.point-2 { top: 50%; left: 540px; }
+.point-3 { top: 540px; left: 50%; }
+.point-4 { top: 50%; left: 40px; }
+
+.point-number {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.orbit-point:hover, .orbit-point.active {
+    border-color: var(--secondary-color);
+    background: var(--secondary-color);
+    transform: translate(-50%, -50%) scale(1.18);
+    box-shadow: var(--shadow-blue);
+}
+
+.orbit-point:hover .point-number, .orbit-point.active .point-number {
+    color: #ffffff;
+}
+
+.orbit-point::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--secondary-color);
+    opacity: 0;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.orbit-point:hover::after, .orbit-point.active::after {
+    opacity: 1;
+    animation: pointPulse 2s infinite;
+}
+
+@keyframes pointPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.22); opacity: 0; }
+}
+
+/* Responsiveness fallback styling for interactive circle */
+@media (max-width: 991px) {
+    .desktop-only-circle {
+        display: none !important;
+    }
+    .mobile-only-grid {
+        display: grid !important;
+    }
+    .supporting-section {
+        padding: 70px 0;
+    }
+}
+
+/* ========================================
+   SUPPORTING EQUIPMENT SECTION (DARK NAVY)
+   ======================================== */
+.supporting-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #0f223d 0%, #071428 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.supporting-section .section-title {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Make sure mobile fallback cards look premium on dark navy */
+.supporting-section .equipment-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+}
+
+.supporting-section .equipment-card h3 {
+    color: #ffffff;
+}
+
+.supporting-section .equipment-card p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.supporting-section .equipment-icon {
+    background: rgba(37, 99, 235, 0.15);
+    color: #60a5fa;
+}
+
+.supporting-section .equipment-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.supporting-section .equipment-card:hover .equipment-icon {
+    background: var(--secondary-color);
+    color: #ffffff;
+}
+
